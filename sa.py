@@ -41,10 +41,12 @@ def sa(x_0, t_max, t_min, max_iter, g):
 
 
 def main():
-    coords_path = "./dj38.csv"
-    coords = pd.read_csv(coords_path, header=None)
-    print(coords)
+    # coords_path = "./dj38.csv"
+    # coords = pd.read_csv(coords_path, header=None)
+    # print(coords)
     # print(sa([-0.12, 0.12], 100, 0.1, 200, 0.99))
+
+    sa([1, 1], 100, 0.1, 200, 0.99)
 
 
 main()

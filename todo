@@ -1,0 +1,10 @@
+Definir una forma de saber cuando excede o no el peso maximo.
+Definir una situacion inicial para el vector solucion.
+Definir una forma de saber el beneficio total.
+
+Modificar la funicion sa para obtener "vecinos".
+Definir la manera en la que se obtienen vecinos:
+ -> No se cuantos elementos igual a uno hay en el vector, por lo que no se
+    si es suficiente hacer permutaciones.
+ - Agregar un uno en otra parte y retirar un cero en otra.
+ - No se si quitar un uno me permite poner mas de un uno en otra parte.
