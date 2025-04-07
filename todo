@@ -6,5 +6,7 @@ Modificar la funicion sa para obtener "vecinos".
 Definir la manera en la que se obtienen vecinos:
  -> No se cuantos elementos igual a uno hay en el vector, por lo que no se
     si es suficiente hacer permutaciones.
- - Agregar un uno en otra parte y retirar un cero en otra.
- - No se si quitar un uno me permite poner mas de un uno en otra parte.
+   - Agregar un uno en otra parte y retirar un cero en otra.
+   - No se si quitar un uno me permite poner mas de un uno en otra parte.
+
+ -> Elegir al azar un indice del arreglo y si hay un 1 cambiarlo por un 0 y viceversa.

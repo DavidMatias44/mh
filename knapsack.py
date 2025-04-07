@@ -6,7 +6,6 @@ import math
 WEIGHTS = [100, 155, 50, 112,  70, 80,  60, 118, 110, 55]
 VALUES  = [100, 100, 80,  40, 160, 10, 100,  55,  88,  1]
 
-# se inicializa el vector solución.
 NUM_ELEMS = len(WEIGHTS)
 
 # hay un peso limite
