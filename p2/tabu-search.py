@@ -2,7 +2,7 @@ import random
 import math
 
 
-NUM_QUEENS = 4
+NUM_QUEENS = 7
 MAX_TABU_LIST_LEN = 3
 
 
@@ -25,17 +25,14 @@ def get_total_collisions(x):
     return colissions
 
 
-def tabu_search(s0):
+def tabu_search(s0, max_iter=1000):
     best_solution = s0
     best_candidate = s0
 
     tabu_list = []
     tabu_list.append(s0)
 
-    # TEST
-    # stop = True
-    i = 1000
-    while i > 0:
+    while max_iter > 0:
         neighbors = get_neighbors(best_candidate)
         best_candidate_fitness = math.inf
 
@@ -54,18 +51,18 @@ def tabu_search(s0):
         if len(tabu_list) > MAX_TABU_LIST_LEN:
             del tabu_list[0]
 
-        i -= 1
+        max_iter -= 1
 
     return best_solution
 
 
 def main():
-    # TODO: implementar un forma de generar una solucion aleatoria xd.
-    # a = [4, 3, 2, 1]
-    a = [1, 2, 3, 4]
-
+    a = [7, 6, 5, 4, 3, 2, 1]
+    random.shuffle(a)
+    print(f"Solución inicial: {a} -> colisiones: {get_total_collisions(a)}")
+    
     res = tabu_search(a)
-    print(f"Solución: {res} -> colisiones: {get_total_collisions(res)}")
+    print(f"Mejor solución:   {res} -> colisiones: {get_total_collisions(res)}")
 
 
 main()
