@@ -1,0 +1,17 @@
+Evolución diferencial.
+    - Requiere tres individuos de la población.
+    - El número total de la población está denotado por NP.
+    - Vector mutante:
+        G + 1 (siguiente generación).
+        Se deben elegir tres elementos diferentes de manera aleatoria (de toda la población).
+        el nuevo vector = el primer elemento + factor de amplificación * (diferencia entre el segundo y tercer elemento).
+    - Se hacen derivadas parciales respecto a cada una de las variables de entrada.
+
+    - Se hace la cruza, vector prueba U.
+        Toma al individuo tal cual o
+        Toma al individuo del vector mutado.
+      Esto se elige de anera aleatoria, para esto tener un crossover rate (CR). Esto decide que tanto quiero que se tomen elementos del vector mutado.
+      El vector de cruza debe tener al menos un elemento del vector mutado.
+rand1bin
+
+Si tienes 10 genes debes tener 45 elementos en tu población.
