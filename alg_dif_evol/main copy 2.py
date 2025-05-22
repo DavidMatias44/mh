@@ -2,12 +2,12 @@ import numpy as np
 import random
 
 
-FACTOR_AMPLIF = 0.9
-CROSSOVER_RATE = 0.2
+FACTOR_AMPLIF = 0.2
+CROSSOVER_RATE = 0.7
 TOLERANCE = 0
 NUM_VARS = 9
-GENERATIONS = 200
-POP_SIZE = 100
+GENERATIONS = 2
+POP_SIZE = 10
 
 SUDOKU = [
     [8, 0, 6, 0, 0, 0, 1, 0, 7],
@@ -70,14 +70,16 @@ def generar_poblacion():
 
 def differential_evolution():
     population = generar_poblacion() 
+    print(population.shape)
     fitness = np.array([aptitud(individuo) for individuo in population])
-    # print(population.shape)
-    
+    print(fitness)
     for generacion in range(GENERATIONS):
         for i in range(POP_SIZE):
             target_vector = population[i].copy()
+            # mutant_vector = np.zeros((NUM_VARS, population[0].shape[0], population[0].shape[1]))
+            # trial_vector = np.zeros((NUM_VARS, population[0].shape[0], population[0].shape[1]))
+            trial_vector = np.zeros_like(population[0])
             mutant_vector = np.zeros_like(population[0])
-            trial_vector = np.zeros(NUM_VARS)
 
             # print(target_vector.shape, mutant_vector.shape)
 
@@ -91,18 +93,20 @@ def differential_evolution():
             # print(r1, r2, r3)
 
             # for j in range(NUM_VARS):
-            mutant_vector = population[r1] + FACTOR_AMPLIF * (population[r2] - population[r3])
-            # print(mutant_vector)
+            # mutant_vector = population[r1] + FACTOR_AMPLIF * (population[r2] - population[r3])
+            mutant_vector = population[0] + FACTOR_AMPLIF * (population[r2] - population[r3])
+            mutant_vector = np.clip(np.round(mutant_vector), 1, 9).astype(int)
 
+            print(mutant_vector)
+            # exit(-1)k
             # CRUCE
-            r = [0, 0]
-            while len(r) != len(np.unique(r)):
-                r = [random.randint(0, NUM_VARS-1) for _ in range(int(np.ceil(CROSSOVER_RATE * NUM_VARS)))]
+            # r = [0, 0]
+            # while len(r) != len(np.unique(r)):
+                # r = [random.randint(0, NUM_VARS-1) for _ in range(int(np.ceil(CROSSOVER_RATE * NUM_VARS)))]
 
             # trial_vector = mutant_vector
-            r = list(set(range(NUM_VARS)) - set(r))
+            # r = list(set(range(NUM_VARS)) - set(r))
             trial_vector = target_vector.copy()
-
             for i in range(NUM_VARS):
                 for j in range(NUM_VARS):
                     if SUDOKU[i][j] == 0:
@@ -117,6 +121,7 @@ def differential_evolution():
             # print(f1, f2)
             
             # SELECCIÓN
+            # print(population)
             if f1 < f2:
                 population[i] = trial_vector
                 fitness[i] = f1
@@ -124,10 +129,13 @@ def differential_evolution():
                 population[i] = target_vector
                 fitness[i] = f2
             
+            # print(population)
+            
         idxs = np.argsort(fitness)
         fitness = fitness[idxs]
         population = population[idxs]
-        
+
+        print(population[0])
         print(f"Generacion: {generacion+1}. Colisiones: {fitness[0]}")
         # best_current = (np.round(population[0]).astype(int) % 8) + 1
         # print(f"Mejor de la generacion: {best_current}")
