@@ -1,0 +1,38 @@
+Particle Swarm Optimization -> pso
+
+Las particulas exploran el espacio de soluciones.
+Se rige por una funcion de aptitud.
+
+Tienen:
+  - Una posicion.
+  - Una velocidad.
+  - Una aptitud.
+
+Dan seguimiento a sus mejores posiciones personales y global.
+
+Cada particula memoriza su pBest.
+Tambien del gBest.
+Ajustan su posicion y velocidad dependiendo del pBest y gBest.
+Hacen exploracion y explotacion.
+
+* Peso inercial.
+* Coeficiente cognitivo.
+* Coeficiente social.
+
+* Tamano del enjambre (convergencia del algoritmo).
+
+Las particulas estan dispersas aleatoriamente en el espacio de busqueda.
+Tambien tienen una velocidad aleatoria (de esta depende el ajuste en las diferentes iteraciones).
+Con cada iteracion se calcula una nueva velocidad a partir de la actual,
+el peso, los pBest y gBest, tambien hay numeros aleatorios (r1 y r2).
+Tambien se calcula una nueva posicion a partir de la actual y de la velocidad.
+
+El cambio en la posicion y velocidad de las particulas es lo que permite la covergencia.
+Se cumple con un criterio de parada o con un limite de iteraciones.
+
+El coeficiente social empieza alto y se debe ir decrementando.
+Lo contario para el coeficiente cognitivo.
+
+Es paralelizable.
+
+Es sensible a la inicializacion.
